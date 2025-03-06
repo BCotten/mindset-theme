@@ -18,6 +18,7 @@
 		"@wordpress/scripts": "^30.12.0"
 	},
 	"dependencies": {
-		"copyright-date": "file:"
+		"copyright-date": "file:",
+		"swiper": "^11.2.5"
 	}
 }
