@@ -94,12 +94,26 @@ function fwd_render_service_posts($attributes)
 function fwd_render_testimonial_slider($attributes, $content)
 {
 	ob_start();
+
+	// Get the arrowColor attribute
+	$arrow_color = isset($attributes['arrowColor']) ? $attributes['arrowColor'] : '#000000';
+
+	// Create a PHP variable that stores the CSS custom property and arrowColor value
+	$arrow_color_style = '--arrow-color: ' . esc_attr($arrow_color) . ';';
+
+	// Get the block wrapper attributes
+	$wrapper_attributes = get_block_wrapper_attributes(
+		array(
+			'style' => $arrow_color_style,
+		)
+	);
+
 	$swiper_settings = array(
 		'pagination' => $attributes['pagination'],
 		'navigation' => $attributes['navigation']
 	);
 ?>
-	<div <?php echo get_block_wrapper_attributes(); ?>>
+	<div <?php echo $wrapper_attributes; ?>>
 		<script>
 			const swiper_settings = <?php echo json_encode($swiper_settings); ?>;
 		</script>
